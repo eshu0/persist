@@ -19,11 +19,11 @@ func NewSQLLiteTableHandler(datastore SQLLiteDatastore) *SQLLiteTableHandler {
 	return &ds
 }
 
-func (handler *SQLLiteTableHandler) GetPersistantStorage() IPersistantStorage {
+func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorage {
 	return handler.Parent
 }
 
-func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant IPersistantStorage){
+func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersistantStorage){
 	handler.Parent = persistant
 }
 
@@ -37,7 +37,7 @@ func (handler *SQLLiteTableHandler) Wipe() bool {
 	return false
 }
 
-func (handler *SQLLiteTableHandler) ReadAll()  []IDataItem {
+func (handler *SQLLiteTableHandler) ReadAll()  []per.IDataItem {
 	// this needs to be implemented
 	return nil
 }
@@ -48,23 +48,23 @@ func (handler *SQLLiteTableHandler) Wipe() bool {
 }
 
 
-func (handler *SQLLiteTableHandler) Create(data IDataItem) bool {
+func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
 	// this needs to be implemented
 	return false
 }
 
-func (handler *SQLLiteTableHandler) Read(data IDataItem) IDataItem {
+func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IDataItem {
 	// this needs to be implemented
 	return false
 }
 
-func (handler *SQLLiteTableHandler) Update(data IDataItem) bool {
+func (handler *SQLLiteTableHandler) Update(data per.IDataItem) bool {
 	// this needs to be implemented
 	return false
 }
 
 
-func (handler *SQLLiteTableHandler) Delete(data IDataItem) bool {
+func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) bool {
 	// this needs to be implemented
 	return false
 }
@@ -87,7 +87,7 @@ func (handler *SQLLiteTableHandler) ExecuteQuery(query string) int64 {
 }
 
 // This adds ProjectsDBStruct to the database 
-func (handler *SQLLiteTableHandler) ExecuteInsertQuery(string query,params ...interface{}) int64 {
+func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...interface{}) int64 {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
 	res, err := statement.Exec(params...)
 	if err ==  nil {
@@ -103,32 +103,32 @@ func (handler *SQLLiteTableHandler) ExecuteInsertQuery(string query,params ...in
 	}
 }
 
-func (handler *SQLLiteTableHandler) ExecuteResult(query string) []*IDataItem {
+func (handler *SQLLiteTableHandler) ExecuteResult(query string) []per.IDataItem {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
 	rows, err := statement.Query()
 	if err ==  nil {
 		return handler.ParseRows(rows)
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteResult",err)
-		empty := []*IDataItem{}
+		empty := []per.IDataItem{}
 		return empty
 	}
 }
 
 
-func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params ...interface{}) []*IDataItem {
+func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params ...interface{}) []per.IDataItem {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
 	rows, err := statement.Query(params...)
 	if err ==  nil {
 		return handler.ParseRows(rows)
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteResultWithData",err)
-		empty := []*IDataItem{}
+		empty := []per.IDataItem{}
 		return empty
 	}
 }
 
 
-func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) []*IDataItem {
-	return []*IDataItem{}
+func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) []per.IDataItem {
+	return []per.IDataItem{}
 }
