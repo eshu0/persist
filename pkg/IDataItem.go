@@ -1,0 +1,3 @@
+type IDataItem interface {
+
+}
