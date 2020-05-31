@@ -76,7 +76,7 @@ func (sqlds *SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
 func (sqlds *SQLLiteDatastore) 	CreateStrutures() bool {
 	
 	success := true
-	for key, element := range sqlds.StorageHandlers {
+	for _, element := range sqlds.StorageHandlers {
 		if element.CreateStrutures() {
 
 		}else {
@@ -88,7 +88,7 @@ func (sqlds *SQLLiteDatastore) 	CreateStrutures() bool {
 
 func (sqlds *SQLLiteDatastore) Wipe() bool{
 	success := true
-	for key, element := range sqlds.StorageHandlers {
+	for _, element := range sqlds.StorageHandlers {
 		if element.Wipe() {
 
 		}else {
