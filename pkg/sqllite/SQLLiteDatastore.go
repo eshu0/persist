@@ -48,13 +48,12 @@ func (sqlds *SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
 	sqlds.Log = logger
 }
 
-func (sqlds *SQLLiteDatastore) CreateHandlers() bool{
+func (sqlds *SQLLiteDatastore) CreateHandlers() bool {
 
 return true
 }
 
-func (sqlds *SQLLiteDatastore) 	CreateStrutures() bool
-{
+func (sqlds *SQLLiteDatastore) 	CreateStrutures() bool {
 	return true
 }
 
