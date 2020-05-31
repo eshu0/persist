@@ -22,7 +22,7 @@ type SQLLiteDatastore struct {
 }
 
 func Create(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
-	sqlds = new SQLLiteDatastore {}
+	sqlds = SQLLiteDatastore{}
 	sqlds.Filename =filename
 	sqlds.SetLog(log)
 	return &sqlds
@@ -44,14 +44,14 @@ func (sqlds *SQLLiteDatastore) Open() {
 // in this implementation that is Tables
 
 func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
-	_, ok := sqlds.StorageHandlers[name];
+	_, ok := sqlds.StorageHandlers[name]
     if ok {
-        delete(sqlds.StorageHandlers, name);
+        delete(sqlds.StorageHandlers, name)
     }
 	return ok
 }
 
-func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) per.IStorageHandler, bool {
+func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandler, bool) {
 	return sqlds.StorageHandlers[name]
 }
 
