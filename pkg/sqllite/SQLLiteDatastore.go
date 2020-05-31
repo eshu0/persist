@@ -23,14 +23,14 @@ type SQLLiteDatastore struct {
 func CreateSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
 	sqlds := SQLLiteDatastore{}
 	sqlds.Filename =filename
-	StorageHandlers = make(map[string]per.IStorageHandler)
+	StorageHandlers := make(map[string]per.IStorageHandler)
 	sqlds.StorageHandlers = StorageHandlers
 	sqlds.SetLog(log)
 	return &sqlds
 }
 
 func CreateOpenSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
-	sqlds := Create(log, filename)
+	sqlds := CreateSQLLiteDatastore(log, filename)
 	sqlds.Open()
 	return sqlds
 }
