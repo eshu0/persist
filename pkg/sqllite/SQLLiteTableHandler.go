@@ -10,7 +10,7 @@ import (
 
 type SQLLiteTableHandler struct {
 	per.IStorageHandler
-	Parent SQLLiteDatastore
+	Parent *SQLLiteDatastore
 }
 
 func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
