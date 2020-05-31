@@ -36,7 +36,7 @@ func CreateOpenSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLite
 }
 
 
-func (sqlds *SQLLiteDatastore) Open() {
+func (sqlds SQLLiteDatastore) Open() {
 	// further checks to be added here like checking filepath is correct etc
 	sqlds.database, _ = sql.Open("sqlite3", sqlds.Filename)
 }
@@ -44,7 +44,7 @@ func (sqlds *SQLLiteDatastore) Open() {
 // Storage Handlers 
 // in this implementation that is Tables
 
-func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
+func (sqlds SQLLiteDatastore) RemoveStorageHandler(name string) bool {
 	_, ok := sqlds.StorageHandlers[name]
     if ok {
         delete(sqlds.StorageHandlers, name)
@@ -52,34 +52,34 @@ func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
 	return ok
 }
 
-func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandler, bool) {
+func (sqlds SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandler, bool) {
 	res, ok :=  sqlds.StorageHandlers[name]
 	return res,ok
 }
 
-func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
+func (sqlds SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
 	store.SetPersistantStorage(sqlds)
 	sqlds.StorageHandlers[name] = store
 }
 
-func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler{
+func (sqlds SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler{
 	return sqlds.StorageHandlers
 }
 	
 // Get/Set the logging for the interface
-func (sqlds *SQLLiteDatastore) GetLog() sli.ISimpleLogger{
+func (sqlds SQLLiteDatastore) GetLog() sli.ISimpleLogger{
 	return sqlds.Log
 }
 
-func (sqlds *SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
+func (sqlds SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
 	sqlds.Log = logger
 }
 
-func (sqlds *SQLLiteDatastore) GetDatabase() *sql.DB {
+func (sqlds SQLLiteDatastore) GetDatabase() *sql.DB {
 	return sqlds.database
 }
 
-func (sqlds *SQLLiteDatastore) CreateStrutures() bool {
+func (sqlds SQLLiteDatastore) CreateStrutures() bool {
 	
 	success := true
 	for _, element := range sqlds.StorageHandlers {
@@ -92,7 +92,7 @@ func (sqlds *SQLLiteDatastore) CreateStrutures() bool {
 	return success
 }
 
-func (sqlds *SQLLiteDatastore) Wipe() bool{
+func (sqlds SQLLiteDatastore) Wipe() bool{
 	success := true
 	for _, element := range sqlds.StorageHandlers {
 		if element.Wipe() {

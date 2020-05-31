@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	_ "github.com/mattn/go-sqlite3"
-	sli "github.com/eshu0/simplelogger/interfaces"
+	//sli "github.com/eshu0/simplelogger/interfaces"
 	per "github.com/eshu0/persist/pkg/interfaces"
 )   
 
@@ -41,12 +41,6 @@ func (handler *SQLLiteTableHandler) ReadAll()  []per.IDataItem {
 	// this needs to be implemented
 	return nil
 }
-
-func (handler *SQLLiteTableHandler) Wipe() bool {
-	// this needs to be implemented
-	return false
-}
-
 
 func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
 	// this needs to be implemented
