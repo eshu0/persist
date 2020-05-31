@@ -13,7 +13,7 @@ type SQLLiteTableHandler struct {
 	Parent SQLLiteDatastore
 }
 
-func NewSQLLiteTableHandler(datastore SQLLiteDatastore) *SQLLiteTableHandler {
+func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 	ds := SQLLiteTableHandler{}
 	ds.SetPersistantStorage(datastore)
 	return &ds
