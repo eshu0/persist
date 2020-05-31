@@ -1,9 +1,5 @@
 package persist
 
-import (
-	sli "github.com/eshu0/simplelogger/interfaces"
-)
-
 type IStorageHandler interface {
 
 	GetPersistantStorage() IPersistantStorage
