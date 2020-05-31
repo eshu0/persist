@@ -6,7 +6,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	sli "github.com/eshu0/simplelogger/interfaces"
 	per "github.com/eshu0/persist/pkg/interfaces"
-
 )   
 
 type SQLLiteDatastore struct {
@@ -21,14 +20,16 @@ type SQLLiteDatastore struct {
 	StorageHandlers map[string] per.IStorageHandler
 }
 
-func Create(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
+func CreateSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
 	sqlds := SQLLiteDatastore{}
 	sqlds.Filename =filename
+	StorageHandlers = make(map[string]per.IStorageHandler)
+	sqlds.StorageHandlers = StorageHandlers
 	sqlds.SetLog(log)
 	return &sqlds
 }
 
-func CreateAndOpen(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
+func CreateOpenSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
 	sqlds := Create(log, filename)
 	sqlds.Open()
 	return sqlds
@@ -73,7 +74,7 @@ func (sqlds *SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
 	sqlds.Log = logger
 }
 
-func (sqlds *SQLLiteDatastore) 	CreateStrutures() bool {
+func (sqlds *SQLLiteDatastore) CreateStrutures() bool {
 	
 	success := true
 	for _, element := range sqlds.StorageHandlers {
