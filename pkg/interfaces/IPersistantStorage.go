@@ -16,9 +16,6 @@ type IPersistantStorage interface {
 	GetLog() sli.ISimpleLogger
 	SetLog(logger sli.ISimpleLogger)
 
-	// This function creates all the handlers
-	CreateHandlers() bool
-
 	// This function creates all the structures for all the handlers
 	// this could be files, tables etc
 	CreateStrutures() bool

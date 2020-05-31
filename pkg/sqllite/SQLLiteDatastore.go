@@ -58,6 +58,7 @@ func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandl
 }
 
 func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
+	store.SetPersistantStorage(sqlds)
 	sqlds.StorageHandlers[name] = store
 }
 
@@ -72,6 +73,10 @@ func (sqlds *SQLLiteDatastore) GetLog() sli.ISimpleLogger{
 
 func (sqlds *SQLLiteDatastore) SetLog(logger sli.ISimpleLogger){
 	sqlds.Log = logger
+}
+
+func (sqlds *SQLLiteDatastore) GetDatabase() *sql.DB {
+	return sqlds.database
 }
 
 func (sqlds *SQLLiteDatastore) CreateStrutures() bool {

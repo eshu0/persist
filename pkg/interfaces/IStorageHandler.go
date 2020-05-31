@@ -5,9 +5,9 @@ import (
 )
 
 type IStorageHandler interface {
-	// Get/Set the logging for the interface
-	GetLog() sli.ISimpleLogger
-	SetLog(logger sli.ISimpleLogger)
+
+	GetPersistantStorage() IPersistantStorage
+	SetPersistantStorage(persistant IPersistantStorage)
 
 	// This function creates all the structures that are needed for storage
 	// this could be files, tables etc
@@ -15,7 +15,9 @@ type IStorageHandler interface {
 
 	// Wipe all data
 	Wipe() bool
+	ReadAll() []IDataItem
 
+	// CRUD operations
 	Create(data IDataItem) bool
 	Read(data IDataItem)   IDataItem
 	Update(data IDataItem) bool
