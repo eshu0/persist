@@ -18,24 +18,24 @@ type SQLLiteDatastore struct {
 
 	Log sli.ISimpleLogger
 
-	StorageHandlers map[string] IStorageHandler
+	StorageHandlers map[string] per.IStorageHandler
 }
 
 
-func  RemoveStorageHandler(name string)cv{
+func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
 	sqlds.StorageHandlers[name] = nil
 	return true
 }
 
-func  GetStorageHandler(name string) per.IStorageHandlerv{
+func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) per.IStorageHandler{
 	return sqlds.StorageHandlers[name]
 }
 
-func  SetStorageHander(name string, store IStorageHandler) {
+func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
 	sqlds.StorageHandlers[name] = store
 }
 
-func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]IStorageHandler{
+func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler{
 	return sqlds.StorageHandlers
 }
 	
