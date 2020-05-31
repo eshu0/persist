@@ -24,7 +24,7 @@ func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorag
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersistantStorage){
-	handler.Parent = persistant
+	handler.Parent = persistant.(SQLLiteDatastore)
 }
 
 func (handler *SQLLiteTableHandler) CreateStrutures() bool {
