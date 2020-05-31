@@ -89,7 +89,7 @@ func (handler *SQLLiteTableHandler) ExecuteQuery(query string) int64 {
 // This adds ProjectsDBStruct to the database 
 func (handler *SQLLiteTableHandler) ExecuteInsertQuery(string query,params ...interface{}) int64 {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
-	res, err := statement.Exec(...params)
+	res, err := statement.Exec(params...)
 	if err ==  nil {
 		lastid, lerr := res.LastInsertId()
 		if lerr !=  nil {
@@ -118,7 +118,7 @@ func (handler *SQLLiteTableHandler) ExecuteResult(query string) []*IDataItem {
 
 func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params ...interface{}) []*IDataItem {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
-	rows, err := statement.Query(...params)
+	rows, err := statement.Query(params...)
 	if err ==  nil {
 		return handler.ParseRows(rows)
 	} else {
