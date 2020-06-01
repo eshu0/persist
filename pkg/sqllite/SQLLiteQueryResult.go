@@ -20,6 +20,29 @@ type SQLLiteQueryResult struct {
 	ErrorData error
 }
 
+
+
+func NewDataQueryResult(succes bool, items []per.IDataItem{}) SQLLiteQueryResult {
+	res := SQLLiteQueryResult{}
+	res.Succeeded = succes
+	res.Results = items
+	return res
+}
+
+func NewRowsAffectedQueryResult(val int64) SQLLiteQueryResult {
+	res := SQLLiteQueryResult{}
+	res.Succeeded = val >= 0
+	res.RowsAffected = val
+	return res
+}
+
+func NewInsertRowsQueryResult(val int64) SQLLiteQueryResult {
+	res := SQLLiteQueryResult{}
+	res.Succeeded = val >= 0
+	res.LastInsertId = val
+	return res
+}
+
 func NewEmptyFailedSQLLiteQueryResult() SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
 	res.Succeeded =false
