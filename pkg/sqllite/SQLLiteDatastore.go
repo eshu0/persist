@@ -79,7 +79,7 @@ func (sqlds *SQLLiteDatastore) GetDatabase() *sql.DB {
 	return sqlds.database
 }
 
-func (sqlds *SQLLiteDatastore) CreateStructures() per.SQLLiteQueryResult {
+func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 	
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
@@ -92,7 +92,7 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.SQLLiteQueryResult {
 	return success
 }
 
-func (sqlds *SQLLiteDatastore) Wipe() per.SQLLiteQueryResult{
+func (sqlds *SQLLiteDatastore) Wipe() per.IQueryResult{
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
 		if element.Wipe() {
