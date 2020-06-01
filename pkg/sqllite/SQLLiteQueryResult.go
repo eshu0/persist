@@ -21,6 +21,11 @@ type SQLLiteQueryResult struct {
 }
 
 
+func ResultToSQLLiteQueryResult(data IQuery) SQLLiteQueryResult {
+	res := data.(SQLLiteQueryResult)
+	return res
+}
+
 
 func NewDataQueryResult(succes bool, items []per.IDataItem) SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
