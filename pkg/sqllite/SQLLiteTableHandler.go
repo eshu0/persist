@@ -30,40 +30,40 @@ func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersist
 	handler.Parent = res
 }
 
-func (handler *SQLLiteTableHandler) CreateStructures() bool {
+func (handler *SQLLiteTableHandler) CreateStructures() SQLLiteQueryResult{
 	// this needs to be implemented
-	return false
+	return nil
 }
 
-func (handler *SQLLiteTableHandler) Wipe() bool {
+func (handler *SQLLiteTableHandler) Wipe() SQLLiteQueryResult {
 	// this needs to be implemented
-	return false
+	return nil
 }
 
-func (handler *SQLLiteTableHandler) ReadAll() []per.IDataItem {
+func (handler *SQLLiteTableHandler) ReadAll() SQLLiteQueryResult {
 	// this needs to be implemented
-	return []per.IDataItem{}
+	return nil
 }
 
-func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
+func (handler *SQLLiteTableHandler) Create(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return false
+	return nil
 }
 
-func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IDataItem {
+func (handler *SQLLiteTableHandler) Read(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil //per.IDataItem{}
+	return nil 
 }
 
-func (handler *SQLLiteTableHandler) Update(data per.IDataItem) bool {
+func (handler *SQLLiteTableHandler) Update(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return false
+	return nil
 }
 
 
-func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) bool {
+func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return false
+	return nil
 }
 
 // End IStorage Handler 

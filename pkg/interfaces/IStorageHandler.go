@@ -7,16 +7,16 @@ type IStorageHandler interface {
 
 	// This function creates all the structures that are needed for storage
 	// this could be files, tables etc
-	CreateStructures() bool
+	CreateStructures() IQueryResult
 
 	// Wipe all data
-	Wipe() bool
+	Wipe() IQueryResult
 	ReadAll() []IDataItem
 
 	// CRUD operations
-	Create(data IDataItem) bool
-	Read(data IDataItem)   IDataItem
-	Update(data IDataItem) bool
-	Delete(data IDataItem) bool
+	Create(data IDataItem) IQueryResult
+	Read(data IDataItem)   IQueryResult
+	Update(data IDataItem) IQueryResult
+	Delete(data IDataItem) IQueryResult
 
 }
