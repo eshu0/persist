@@ -19,6 +19,8 @@ func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 	return &ds
 }
 
+// Start IStorage Handler 
+
 func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorage {
 	return handler.Parent
 }
@@ -62,6 +64,8 @@ func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) bool {
 	// this needs to be implemented
 	return false
 }
+
+// End IStorage Handler 
 
 // This function ProjectsDBStruct removes all data for the table
 func (handler *SQLLiteTableHandler) ExecuteQuery(query string) int64 {
@@ -121,7 +125,6 @@ func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params .
 		return empty
 	}
 }
-
 
 func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) []per.IDataItem {
 	return []per.IDataItem{}
