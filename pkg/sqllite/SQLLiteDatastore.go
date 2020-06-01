@@ -52,8 +52,8 @@ func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandl
 func (sqlds *SQLLiteDatastore) SetStorageHander(name string, handler per.IStorageHandler) {
 	//(*store).SetPersistantStorage(sqlds)
 	//ss := *store
-	//sqlds.Log.LogDebugf("SetStorageHander","Setting %s, %v", name, handler)
-	//handler.SetPersistantStorage(sqlds)
+	sqlds.Log.LogDebugf("SetStorageHander","Setting %s, %v", name, handler)
+	handler.SetPersistantStorage(sqlds)
 
 	//res := handler.(*SQLLiteTableHandler)
 	//res.Parent = sqlds
@@ -98,6 +98,7 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 	}
 	return success
 }
+
 /*
 func (sqlds *SQLLiteDatastore) Wipe() per.IQueryResult{
 	success := NewEmptySucceedSQLLiteQueryResult()
