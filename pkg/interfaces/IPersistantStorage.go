@@ -21,7 +21,7 @@ type IPersistantStorage interface {
 	CreateStructures() IQueryResult
 
 	// Wipe all data
-	Wipe() IQueryResult
+	//Wipe() IQueryResult
 
 }
 

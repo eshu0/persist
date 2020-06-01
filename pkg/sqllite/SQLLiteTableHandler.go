@@ -4,7 +4,6 @@ import (
 	"database/sql"
 
 	_ "github.com/mattn/go-sqlite3"
-	//sli "github.com/eshu0/simplelogger/interfaces"
 	per "github.com/eshu0/persist/pkg/interfaces"
 )   
 
@@ -23,8 +22,6 @@ func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 
 // Start IStorage Handler 
 func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorage {
-	//par := handler.Parent
-	//res := par.(*per.IPersistantStorage)
 	return handler.Parent
 }
 
