@@ -22,7 +22,7 @@ type SQLLiteQueryResult struct {
 
 
 
-func NewDataQueryResult(succes bool, items []per.IDataItem{}) SQLLiteQueryResult {
+func NewDataQueryResult(succes bool, items []per.IDataItem) SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
 	res.Succeeded = succes
 	res.Results = items
