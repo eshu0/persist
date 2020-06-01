@@ -11,7 +11,7 @@ type IStorageHandler interface {
 
 	// Wipe all data
 	Wipe() IQueryResult
-	ReadAll() []IDataItem
+	ReadAll() IQueryResult
 
 	// CRUD operations
 	Create(data IDataItem) IQueryResult
