@@ -42,7 +42,7 @@ func (handler *SQLLiteTableHandler) Wipe() bool {
 
 func (handler *SQLLiteTableHandler) ReadAll() []per.IDataItem {
 	// this needs to be implemented
-	return nil
+	return []per.IDataItem{}
 }
 
 func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
@@ -52,7 +52,7 @@ func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
 
 func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IDataItem {
 	// this needs to be implemented
-	return nil
+	return per.IDataItem{}
 }
 
 func (handler *SQLLiteTableHandler) Update(data per.IDataItem) bool {
@@ -68,7 +68,14 @@ func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) bool {
 
 // End IStorage Handler 
 
-// This function ProjectsDBStruct removes all data for the table
+// SQL LIte Execution Functions
+
+// This is to be overwritten
+func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) []per.IDataItem {
+	return []per.IDataItem{}
+}
+
+// These can be used as is
 func (handler *SQLLiteTableHandler) ExecuteQuery(query string) int64 {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
 	res, err := statement.Exec()
@@ -85,7 +92,23 @@ func (handler *SQLLiteTableHandler) ExecuteQuery(query string) int64 {
 	}
 }
 
-// This adds ProjectsDBStruct to the database 
+func (handler *SQLLiteTableHandler) ExecuteQueryWithDatay(query string,params ...interface{}) int64 {
+	statement, _ := handler.Parent.GetDatabase().Prepare(query)
+	res, err := statement.Exec(params...)
+	if err ==  nil {
+		rowsaff, rerr := res.RowsAffected()
+		if rerr !=  nil {
+			handler.Parent.GetLog().LogErrorE("ExecuteQuery - RowsAffected Error",rerr)
+			return -1
+		}
+		return lastid
+	} else {
+		handler.Parent.GetLog().LogErrorE("ExecuteQueryWithDatay",err)
+		return -1
+	}
+}
+
+
 func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...interface{}) int64 {
 	statement, _ := handler.Parent.GetDatabase().Prepare(query)
 	res, err := statement.Exec(params...)
@@ -125,8 +148,4 @@ func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params .
 		empty := []per.IDataItem{}
 		return empty
 	}
-}
-
-func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) []per.IDataItem {
-	return []per.IDataItem{}
 }
