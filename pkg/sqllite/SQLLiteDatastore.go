@@ -57,14 +57,16 @@ func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandl
 	return res,ok
 }
 
-func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
+func (sqlds *SQLLiteDatastore) SetStorageHander(name string, handler per.IStorageHandler) {
 	//(*store).SetPersistantStorage(sqlds)
 	//ss := *store
-	store.SetPersistantStorage(sqlds)
-	sqlds.StorageHandlers[name] = store
+	sqlds.Log.LogDebugf("SetStorageHander","Setting %s, %v", name, handler)
+	handler.SetPersistantStorage(sqlds)
+	handler.Parent = sqlds
+	sqlds.StorageHandlers[name] = handler
 }
 
-func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler{
+func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler {
 	return sqlds.StorageHandlers
 }
 	
