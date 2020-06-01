@@ -51,7 +51,7 @@ func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
 
 func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IDataItem {
 	// this needs to be implemented
-	return false
+	return nil
 }
 
 func (handler *SQLLiteTableHandler) Update(data per.IDataItem) bool {
