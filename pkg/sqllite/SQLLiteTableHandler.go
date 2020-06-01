@@ -83,18 +83,13 @@ func (handler *SQLLiteTableHandler) ReadAllC() SQLLiteQueryResult {
 }
 
 // Conversion of results
-func (handler *SQLLiteTableHandler) ReadC(data per.IDataItem) SQLLiteQueryResult {
-	return  handler.ConvertResult(handler.Read(data))
-}
-
-// Conversion of results
 func (handler *SQLLiteTableHandler) CreateC(data per.IDataItem) SQLLiteQueryResult {
 	return  handler.ConvertResult(handler.Create(data))
 }
 
 // Conversion of results
 func (handler *SQLLiteTableHandler) ReadC(data per.IDataItem) SQLLiteQueryResult {
-	return  handler.ConvertResult(handler.Create(data))
+	return  handler.ConvertResult(handler.Read(data))
 }
 // Conversion of results
 func (handler *SQLLiteTableHandler) UpdateC(data per.IDataItem) SQLLiteQueryResult {
