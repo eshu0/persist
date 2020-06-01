@@ -168,7 +168,7 @@ func (handler *SQLLiteTableHandler) ExecuteResult(query string, params ...interf
 	}
 	rows, err := statement.Query(params...)
 	if err ==  nil {
-		handler.Parent.GetLog().LogDebugf("ExecuteResult","Resulted with %d rows to be parsed",len(rows))
+		handler.Parent.GetLog().LogDebug("ExecuteResult","Resulted with rows to be parsed")
 		return handler.ParseRows(rows)
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteResultWithData",err)
