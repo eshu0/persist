@@ -30,38 +30,38 @@ func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersist
 	handler.Parent = res
 }
 
-func (handler *SQLLiteTableHandler) CreateStructures() SQLLiteQueryResult{
+func (handler *SQLLiteTableHandler) CreateStructures() per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
-func (handler *SQLLiteTableHandler) Wipe() SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) Wipe() per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
-func (handler *SQLLiteTableHandler) ReadAll() SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ReadAll() per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
-func (handler *SQLLiteTableHandler) Create(data per.IDataItem) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) Create(data per.IDataItem) per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
-func (handler *SQLLiteTableHandler) Read(data per.IDataItem) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult() 
 }
 
-func (handler *SQLLiteTableHandler) Update(data per.IDataItem) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) Update(data per.IDataItem) per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 
-func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) per.IQueryResult {
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
@@ -71,7 +71,7 @@ func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) SQLLiteQueryResul
 // SQL LIte Execution Functions
 
 // This is to be overwritten
-func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) per.IQueryResult {
 	return NewDataQueryResult(false,[]per.IDataItem{})
 }
 
