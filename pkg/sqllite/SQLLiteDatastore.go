@@ -67,7 +67,7 @@ func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHa
 }
 	
 // Get/Set the logging for the interface
-func (sqlds *SQLLiteDatastore) GetLog() sli.ISimpleLogger{
+func (sqlds *SQLLiteDatastore) GetLog() sli.ISimpleLogger {
 	return sqlds.Log
 }
 
