@@ -5,7 +5,7 @@ type IStorageHandler interface {
 	// Make sure that the Peristant storage is available
 	// Thsiw ill have access to files, database, logging etc
 	GetPersistantStorage() IPersistantStorage
-	SetPersistantStorage(persistant IPersistantStorage) IStorageHandler
+	SetPersistantStorage(persistant IPersistantStorage) //IStorageHandler
 
 	// This function creates all the structures that are needed for storage
 	// this could be files, tables etc
