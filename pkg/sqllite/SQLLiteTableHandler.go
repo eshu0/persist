@@ -26,7 +26,8 @@ func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorag
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersistantStorage){
-	//handler.Parent = &persistant
+	res := persistant.(*SQLLiteDatastore)
+	handler.Parent = &res
 }
 
 func (handler *SQLLiteTableHandler) CreateStructures() bool {
@@ -39,7 +40,7 @@ func (handler *SQLLiteTableHandler) Wipe() bool {
 	return false
 }
 
-func (handler *SQLLiteTableHandler) ReadAll()  []per.IDataItem {
+func (handler *SQLLiteTableHandler) ReadAll() []per.IDataItem {
 	// this needs to be implemented
 	return nil
 }
