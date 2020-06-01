@@ -123,4 +123,11 @@ func (handler *SQLLiteTableHandler) DeleteC(data per.IDataItem) SQLLiteQueryResu
 	return  handler.ConvertResult(handler.Delete(data))
 }
 
+
 // End IStorage Handler 
+
+// empty Parserows example
+func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) per.IQueryResult {
+	handler.Parent.GetLog().LogDebug("ParseRows","Returing empty results - was this function replaced")
+	return NewDataQueryResult(false,[]per.IDataItem{})
+}

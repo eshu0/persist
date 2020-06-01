@@ -4,9 +4,11 @@ import (
 	"database/sql"
 
 	_ "github.com/mattn/go-sqlite3"
-	//sli "github.com/eshu0/simplelogger/interfaces"
 	per "github.com/eshu0/persist/pkg/interfaces"
 )   
+
+type ParseRows(rows *sql.Rows) per.IQueryResult 
+
 
 type SQLLightQueryExecutor struct {
 	Parent *SQLLiteDatastore
@@ -65,7 +67,7 @@ func (handler *SQLLightQueryExecutor) ExecuteInsertQuery(query string,params ...
 	}
 }
 
-func (handler *SQLLightQueryExecutor) ExecuteResult(query string, params ...interface{}) per.IQueryResult  {
+func (handler *SQLLightQueryExecutor) ExecuteResult(query string,parser ParseRows, params ...interface{}) per.IQueryResult  {
 	empty := []per.IDataItem{}
 	handler.Parent.GetLog().LogDebug("ExecuteResult",query)
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
@@ -76,7 +78,7 @@ func (handler *SQLLightQueryExecutor) ExecuteResult(query string, params ...inte
 	rows, err := statement.Query(params...)
 	if err ==  nil {
 		handler.Parent.GetLog().LogDebug("ExecuteResult","Resulted with rows to be parsed")
-		return handler.ParseRows(rows)
+		return parser(rows)
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteResultWithData",err)
 		return NewDataQueryResult(false,empty)
