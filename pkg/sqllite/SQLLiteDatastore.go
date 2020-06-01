@@ -55,11 +55,12 @@ func (sqlds *SQLLiteDatastore) SetStorageHander(name string, handler per.IStorag
 		//res := handler.(*SQLLiteTableHandler)
 	//res.Parent = sqlds
 	sqlds.Log.LogDebugf("SetStorageHander","Setting %s, %v", name, handler)
-	handler.SetPersistantStorage(sqlds)
+	newhandler := handler.SetPersistantStorage(sqlds)
 	handlers := sqlds.StorageHandlers
-	handlers[name] = handler
+	handlers[name] = newhandler
 	sqlds.StorageHandlers = handlers
-	 
+	sqlds.Log.LogDebugf("SetStorageHander","Handlers = %v", name, sqlds.StorageHandlers)
+
 }
 
 func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
