@@ -20,17 +20,17 @@ type SQLLiteQueryResult struct {
 	ErrorData error
 }
 
-func NewEmptyFailedSQLLiteQueryResult() *SQLLiteQueryResult {
+func NewEmptyFailedSQLLiteQueryResult() SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
 	res.Succeeded =false
-	return &res
+	return res
 }
 
 
-func NewEmptySucceedSQLLiteQueryResult() *SQLLiteQueryResult {
+func NewEmptySucceedSQLLiteQueryResult() SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
 	res.Succeeded =true
-	return &res
+	return res
 }
 
 func (res *SQLLiteQueryResult) QuerySucceeded() bool{

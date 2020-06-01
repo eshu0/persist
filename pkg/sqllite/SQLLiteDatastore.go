@@ -83,7 +83,8 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 	
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
-		if element.CreateStructures() {
+		res := element.CreateStructures()
+		if res.Succeeded() {
 
 		}else {
 			success = NewEmptyFailedSQLLiteQueryResult()
@@ -95,7 +96,8 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 func (sqlds *SQLLiteDatastore) Wipe() per.IQueryResult{
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
-		if element.Wipe() {
+		res :=  element.Wipe() 
+		if res.Succeeded() {
 
 		}else {
 			success = NewEmptyFailedSQLLiteQueryResult()
