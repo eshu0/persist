@@ -163,11 +163,11 @@ func (handler *SQLLiteTableHandler) ExecuteResult(query string, params ...interf
 	handler.Parent.GetLog().LogDebug("ExecuteResult",query)
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
+		handler.Parent.GetLog().LogErrorE("ExecuteResult - Prepare",perr)
 		return NewDataQueryResult(false,empty)
 	}
 	rows, err := statement.Query(params...)
 	if err ==  nil {
-		handler.Parent.GetLog().LogErrorE("ExecuteInsertQuery - LastInsertId",lerr)
 		handler.Parent.GetLog().LogDebugf("ExecuteResult","Resulted with %d rows to be parsed",len(rows))
 		return handler.ParseRows(rows)
 	} else {
