@@ -76,29 +76,8 @@ func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) SQLLiteQueryResult
 }
 
 // These can be used as is
-/*
-func (handler *SQLLiteTableHandler) ExecuteQuery(query string) SQLLiteQueryResult {
-	statement, perr := handler.Parent.GetDatabase().Prepare(query)
-	if perr !=  nil {
-		handler.Parent.GetLog().LogErrorE("ExecuteQuery - Prepare",perr)
-		return NewRowsAffectedQueryResult(-1)
-	}
-	res, err := statement.Exec()
-	if err ==  nil {
-		rowsaff, rerr := res.RowsAffected()
-		if rerr !=  nil {
-			handler.Parent.GetLog().LogErrorE("ExecuteQuery - RowsAffected Error",rerr)
-			return NewRowsAffectedQueryResult(-1)
-		}
-		return NewRowsAffectedQueryResult(rowsaff)
-	}else{
-		handler.Parent.GetLog().LogErrorE("ExecuteQuery",err)
-		return NewRowsAffectedQueryResult(-1)
-	}
-}
-*/
 
-func (handler *SQLLiteTableHandler) ExecuteQuery(query string,params ...interface{}) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ExecuteQuery(query string,params ...interface{}) per.IQueryResult  {
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
 		handler.Parent.GetLog().LogErrorE("ExecuteQueryWithDatay - Prepare",perr)
@@ -119,7 +98,7 @@ func (handler *SQLLiteTableHandler) ExecuteQuery(query string,params ...interfac
 }
 
 
-func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...interface{}) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...interface{}) per.IQueryResult  {
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
 		handler.Parent.GetLog().LogErrorE("ExecuteInsertQuery - Prepare",perr)
@@ -139,25 +118,7 @@ func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...in
 	}
 }
 
-/*
-func (handler *SQLLiteTableHandler) ExecuteResult(query string) SQLLiteQueryResult {
-	empty := []per.IDataItem{}
-	statement, perr := handler.Parent.GetDatabase().Prepare(query)
-	if perr !=  nil {
-		handler.Parent.GetLog().LogErrorE("ExecuteResult - Prepare",perr)
-		return NewDataQueryResult(false,empty)
-	}
-	rows, err := statement.Query()
-	if err ==  nil {
-		return handler.ParseRows(rows)
-	} else {
-		handler.Parent.GetLog().LogErrorE("ExecuteResult",err)
-		return NewDataQueryResult(false,empty)
-	}
-}
-*/
-
-func (handler *SQLLiteTableHandler) ExecuteResult(query string, params ...interface{}) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ExecuteResult(query string, params ...interface{}) per.IQueryResult  {
 	empty := []per.IDataItem{}
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
