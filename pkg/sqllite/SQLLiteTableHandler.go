@@ -11,7 +11,7 @@ import (
 type SQLLiteTableHandler struct {
 	per.IStorageHandler
 	Parent *SQLLiteDatastore
-	Executor SQLLightQueryExecutor
+	Executor *SQLLightQueryExecutor
 }
 
 func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
