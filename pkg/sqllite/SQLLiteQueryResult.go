@@ -7,7 +7,7 @@ import (
 	per "github.com/eshu0/persist/pkg/interfaces"
 )   
 
-type SQLLiteQueryResult interface {
+type SQLLiteQueryResult struct {
 	per.IQueryResult
 
 	Results []per.IDataItem 
