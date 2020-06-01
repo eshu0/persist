@@ -17,15 +17,15 @@ type SQLLiteDatastore struct {
 
 	Log sli.ISimpleLogger
 
-	StorageHandlers map[string] per.IStorageHandler
+	StorageHandlers map[string] *per.IStorageHandler
 }
 
 func CreateSQLLiteDatastore(log sli.ISimpleLogger, filename string) *SQLLiteDatastore {
 	sqlds := SQLLiteDatastore{}
 	sqlds.Filename =filename
-	StorageHandlers := make(map[string]per.IStorageHandler)
+	sqlds.Log = log
+	StorageHandlers := make(map[string]*per.IStorageHandler)
 	sqlds.StorageHandlers = StorageHandlers
-	sqlds.SetLog(log)
 	return &sqlds
 }
 
@@ -52,17 +52,17 @@ func (sqlds *SQLLiteDatastore) RemoveStorageHandler(name string) bool {
 	return ok
 }
 
-func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (per.IStorageHandler, bool) {
+func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (*per.IStorageHandler, bool) {
 	res, ok :=  sqlds.StorageHandlers[name]
 	return res,ok
 }
 
-func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store per.IStorageHandler) {
+func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store *per.IStorageHandler) {
 	store.SetPersistantStorage(sqlds)
 	sqlds.StorageHandlers[name] = store
 }
 
-func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]per.IStorageHandler{
+func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]*per.IStorageHandler{
 	return sqlds.StorageHandlers
 }
 	
