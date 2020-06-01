@@ -83,7 +83,7 @@ func (sqlds *SQLLiteDatastore) CreateStructures() bool {
 	
 	success := true
 	for _, element := range sqlds.StorageHandlers {
-		if element.CreateStrutures() {
+		if element.CreateStructures() {
 
 		}else {
 			success = false
