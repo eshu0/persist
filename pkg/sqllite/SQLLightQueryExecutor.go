@@ -7,7 +7,7 @@ import (
 	per "github.com/eshu0/persist/pkg/interfaces"
 )   
 
-type ParseRows(*sql.Rows) per.IQueryResult 
+type ParseRows func(*sql.Rows) per.IQueryResult 
 
 
 type SQLLightQueryExecutor struct {
