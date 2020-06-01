@@ -21,7 +21,7 @@ type SQLLiteQueryResult struct {
 }
 
 
-func ResultToSQLLiteQueryResult(data IQuery) SQLLiteQueryResult {
+func ResultToSQLLiteQueryResult(data per.IQuery) SQLLiteQueryResult {
 	res := data.(SQLLiteQueryResult)
 	return res
 }
