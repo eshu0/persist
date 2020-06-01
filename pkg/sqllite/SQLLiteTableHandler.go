@@ -32,38 +32,38 @@ func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersist
 
 func (handler *SQLLiteTableHandler) CreateStructures() SQLLiteQueryResult{
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 func (handler *SQLLiteTableHandler) Wipe() SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 func (handler *SQLLiteTableHandler) ReadAll() SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 func (handler *SQLLiteTableHandler) Create(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 func (handler *SQLLiteTableHandler) Read(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil 
+	return  NewEmptyFailedSQLLiteQueryResult() 
 }
 
 func (handler *SQLLiteTableHandler) Update(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 
 func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) SQLLiteQueryResult {
 	// this needs to be implemented
-	return nil
+	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
 // End IStorage Handler 

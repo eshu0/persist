@@ -79,26 +79,26 @@ func (sqlds *SQLLiteDatastore) GetDatabase() *sql.DB {
 	return sqlds.database
 }
 
-func (sqlds *SQLLiteDatastore) CreateStructures() SQLLiteQueryResult {
+func (sqlds *SQLLiteDatastore) CreateStructures() per.SQLLiteQueryResult {
 	
-	success := true
+	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
 		if element.CreateStructures() {
 
 		}else {
-			success = false
+			success = NewEmptyFailedSQLLiteQueryResult()
 		}
 	}
 	return success
 }
 
-func (sqlds *SQLLiteDatastore) Wipe() SQLLiteQueryResult{
-	success := true
+func (sqlds *SQLLiteDatastore) Wipe() per.SQLLiteQueryResult{
+	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
 		if element.Wipe() {
 
 		}else {
-			success = false
+			success = NewEmptyFailedSQLLiteQueryResult()
 		}
 	}
 	return success

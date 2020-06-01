@@ -20,6 +20,19 @@ type SQLLiteQueryResult struct {
 	Error error
 }
 
+func NewEmptyFailedSQLLiteQueryResult() *SQLLiteQueryResult {
+	res := SQLLiteQueryResult{}
+	res.Succeeded =false
+	return &res
+}
+
+
+func NewEmptySucceedSQLLiteQueryResult() *SQLLiteQueryResult {
+	res := SQLLiteQueryResult{}
+	res.Succeeded =true
+	return &res
+}
+
 func (res *SQLLiteQueryResult) QuerySucceeded() bool{
 	return res.Succeeded
 }
