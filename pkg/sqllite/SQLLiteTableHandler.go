@@ -10,26 +10,24 @@ import (
 
 type SQLLiteTableHandler struct {
 	per.IStorageHandler
-	Parent *per.IPersistantStorage
+	Parent *SQLLiteDatastore
 }
 
 func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 	ds := SQLLiteTableHandler{}
-	res := datastore.(per.IPersistantStorage)
-	ds.SetPersistantStorage(res)
-//	ds.SetPersistantStorage(datastore)
-
-//	ds.Parent = datastore
+	ds.Parent = datastore
 	return &ds
 }
 
 // Start IStorage Handler 
 func (handler *SQLLiteTableHandler) GetPersistantStorage() *per.IPersistantStorage {
-	return handler.Parent
+	par := handler.Parent
+	res := par.(*per.IPersistantStorage)
+	return res
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant *per.IPersistantStorage){
-	handler.Parent = persistant
+	//handler.Parent = persistant
 }
 
 func (handler *SQLLiteTableHandler) CreateStructures() per.IQueryResult {
