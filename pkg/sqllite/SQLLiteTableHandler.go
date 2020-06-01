@@ -15,7 +15,11 @@ type SQLLiteTableHandler struct {
 
 func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 	ds := SQLLiteTableHandler{}
-	ds.SetPersistantStorage(datastore)
+	res := datastore.(*per.IPersistantStorage)
+	ds.SetPersistantStorage(res)
+//	ds.SetPersistantStorage(datastore)
+
+//	ds.Parent = datastore
 	return &ds
 }
 
@@ -25,7 +29,7 @@ func (handler *SQLLiteTableHandler) GetPersistantStorage() *per.IPersistantStora
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant *per.IPersistantStorage){
-	res := persistant.(*SQLLiteDatastore)
+	//res := persistant.(*SQLLiteDatastore)
 	handler.Parent = res
 }
 

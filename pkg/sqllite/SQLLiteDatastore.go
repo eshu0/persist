@@ -59,9 +59,9 @@ func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (*per.IStorageHand
 
 func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store *per.IStorageHandler) {
 	//(*store).SetPersistantStorage(sqlds)
-	ss := *store
-	ss.SetPersistantStorage(sqlds)
-	sqlds.StorageHandlers[name] = ss
+	//ss := *store
+	//ss.SetPersistantStorage(sqlds)
+	//sqlds.StorageHandlers[name] = ss
 }
 
 func (sqlds *SQLLiteDatastore) GetAllStorageHandlers() map[string]*per.IStorageHandler{
