@@ -76,6 +76,7 @@ func (handler *SQLLiteTableHandler) ParseRows(rows *sql.Rows) SQLLiteQueryResult
 }
 
 // These can be used as is
+/*
 func (handler *SQLLiteTableHandler) ExecuteQuery(query string) SQLLiteQueryResult {
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
@@ -95,8 +96,9 @@ func (handler *SQLLiteTableHandler) ExecuteQuery(query string) SQLLiteQueryResul
 		return NewRowsAffectedQueryResult(-1)
 	}
 }
+*/
 
-func (handler *SQLLiteTableHandler) ExecuteQueryWithDatay(query string,params ...interface{}) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ExecuteQuery(query string,params ...interface{}) SQLLiteQueryResult {
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
 		handler.Parent.GetLog().LogErrorE("ExecuteQueryWithDatay - Prepare",perr)
@@ -137,6 +139,7 @@ func (handler *SQLLiteTableHandler) ExecuteInsertQuery(query string,params ...in
 	}
 }
 
+/*
 func (handler *SQLLiteTableHandler) ExecuteResult(query string) SQLLiteQueryResult {
 	empty := []per.IDataItem{}
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
@@ -152,9 +155,9 @@ func (handler *SQLLiteTableHandler) ExecuteResult(query string) SQLLiteQueryResu
 		return NewDataQueryResult(false,empty)
 	}
 }
+*/
 
-
-func (handler *SQLLiteTableHandler) ExecuteResultWithData(query string, params ...interface{}) SQLLiteQueryResult {
+func (handler *SQLLiteTableHandler) ExecuteResult(query string, params ...interface{}) SQLLiteQueryResult {
 	empty := []per.IDataItem{}
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
