@@ -52,7 +52,7 @@ func (handler *SQLLiteTableHandler) Create(data per.IDataItem) bool {
 
 func (handler *SQLLiteTableHandler) Read(data per.IDataItem) per.IDataItem {
 	// this needs to be implemented
-	return per.IDataItem{}
+	return nil //per.IDataItem{}
 }
 
 func (handler *SQLLiteTableHandler) Update(data per.IDataItem) bool {
@@ -101,7 +101,7 @@ func (handler *SQLLiteTableHandler) ExecuteQueryWithDatay(query string,params ..
 			handler.Parent.GetLog().LogErrorE("ExecuteQuery - RowsAffected Error",rerr)
 			return -1
 		}
-		return lastid
+		return rowsaff
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteQueryWithDatay",err)
 		return -1
