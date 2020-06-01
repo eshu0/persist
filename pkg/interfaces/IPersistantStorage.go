@@ -18,10 +18,10 @@ type IPersistantStorage interface {
 
 	// This function creates all the structures for all the handlers
 	// this could be files, tables etc
-	CreateStructures() bool
+	CreateStructures() IQueryResult
 
 	// Wipe all data
-	Wipe() bool
+	Wipe() IQueryResult
 
 }
 
