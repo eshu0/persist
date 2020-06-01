@@ -72,6 +72,39 @@ func (handler *SQLLiteTableHandler) ConvertResult(data per.IQueryResult) SQLLite
 	return  ResultToSQLLiteQueryResult(data)
 }
 
+// Conversion of results
+func (handler *SQLLiteTableHandler) WipeC() SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Wipe())
+}
+
+// Conversion of results
+func (handler *SQLLiteTableHandler) ReadAllC() SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.ReadAll())
+}
+
+// Conversion of results
+func (handler *SQLLiteTableHandler) ReadC(data per.IDataItem) SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Read(data))
+}
+
+// Conversion of results
+func (handler *SQLLiteTableHandler) CreateC(data per.IDataItem) SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Create(data))
+}
+
+// Conversion of results
+func (handler *SQLLiteTableHandler) ReadC(data per.IDataItem) SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Create(data))
+}
+// Conversion of results
+func (handler *SQLLiteTableHandler) UpdateC(data per.IDataItem) SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Create(data))
+}
+
+// Conversion of results
+func (handler *SQLLiteTableHandler) DeleteC(data per.IDataItem) SQLLiteQueryResult {
+	return  handler.ConvertResult(handler.Create(data))
+}
 
 // End IStorage Handler 
 
