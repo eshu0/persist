@@ -50,20 +50,20 @@ func (handler *SQLLightQueryExecutor) ExecuteInsertQuery(query string,params ...
 	statement, perr := handler.Parent.GetDatabase().Prepare(query)
 	if perr !=  nil {
 		handler.Parent.GetLog().LogErrorE("ExecuteInsertQuery - Prepare",perr)
-		return NewRowsAffectedQueryResult(-1) 
+		return NewInsertRowsQueryResult(-1) 
 	}
 	res, err := statement.Exec(params...)
 	if err ==  nil {
 		lastid, lerr := res.LastInsertId()
 		if lerr !=  nil {
 			handler.Parent.GetLog().LogErrorE("ExecuteInsertQuery - LastInsertId",lerr)
-			return NewRowsAffectedQueryResult(-1) 
+			return NewInsertRowsQueryResult(-1) 
 		}
 		handler.Parent.GetLog().LogDebugf("ExecuteInsertQuery","Last Insert Id %d",lastid)
-		return NewRowsAffectedQueryResult(lastid) 
+		return NewInsertRowsQueryResult(lastid) 
 	} else {
 		handler.Parent.GetLog().LogErrorE("ExecuteInsertQuery",err)
-		return NewRowsAffectedQueryResult(-1) 
+		return NewInsertRowsQueryResult(-1) 
 	}
 }
 
