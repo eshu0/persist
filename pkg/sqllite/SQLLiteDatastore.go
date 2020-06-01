@@ -79,7 +79,7 @@ func (sqlds *SQLLiteDatastore) GetDatabase() *sql.DB {
 	return sqlds.database
 }
 
-func (sqlds *SQLLiteDatastore) CreateStrutures() bool {
+func (sqlds *SQLLiteDatastore) CreateStructures() bool {
 	
 	success := true
 	for _, element := range sqlds.StorageHandlers {

@@ -7,7 +7,7 @@ type IStorageHandler interface {
 
 	// This function creates all the structures that are needed for storage
 	// this could be files, tables etc
-	CreateStrutures() bool
+	CreateStructures() bool
 
 	// Wipe all data
 	Wipe() bool

@@ -27,7 +27,7 @@ func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersist
 	//handler.Parent = &persistant
 }
 
-func (handler *SQLLiteTableHandler) CreateStrutures() bool {
+func (handler *SQLLiteTableHandler) CreateStructures() bool {
 	// this needs to be implemented
 	return false
 }
