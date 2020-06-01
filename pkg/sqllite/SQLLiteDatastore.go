@@ -58,7 +58,7 @@ func (sqlds *SQLLiteDatastore) GetStorageHandler(name string) (*per.IStorageHand
 }
 
 func (sqlds *SQLLiteDatastore) SetStorageHander(name string, store *per.IStorageHandler) {
-	*store.SetPersistantStorage(sqlds)
+	(*store).SetPersistantStorage(sqlds)
 	sqlds.StorageHandlers[name] = store
 }
 
@@ -83,7 +83,7 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 	
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
-		res := *element.CreateStructures()
+		res := (*element).CreateStructures()
 		if res.QuerySucceeded() {
 
 		}else {
@@ -96,7 +96,7 @@ func (sqlds *SQLLiteDatastore) CreateStructures() per.IQueryResult {
 func (sqlds *SQLLiteDatastore) Wipe() per.IQueryResult{
 	success := NewEmptySucceedSQLLiteQueryResult()
 	for _, element := range sqlds.StorageHandlers {
-		res :=  *element.Wipe() 
+		res :=  (*element).Wipe() 
 		if res.QuerySucceeded() {
 
 		}else {
