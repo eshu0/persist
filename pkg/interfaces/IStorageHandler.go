@@ -2,8 +2,8 @@ package persist
 
 type IStorageHandler interface {
 
-	GetPersistantStorage() IPersistantStorage
-	SetPersistantStorage(persistant IPersistantStorage)
+	GetPersistantStorage() *IPersistantStorage
+	SetPersistantStorage(persistant *IPersistantStorage)
 
 	// This function creates all the structures that are needed for storage
 	// this could be files, tables etc
