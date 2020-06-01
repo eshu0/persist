@@ -66,6 +66,13 @@ func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) per.IQueryResult 
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
 
+
+func (handler *SQLLiteTableHandler) ConvertResult(data per.IQueryResult) SQLLiteQueryResult {
+	// this needs to be implemented
+	return  ResultToSQLLiteQueryResult(data)
+}
+
+
 // End IStorage Handler 
 
 // SQL LIte Execution Functions
