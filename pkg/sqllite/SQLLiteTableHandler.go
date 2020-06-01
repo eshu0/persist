@@ -21,9 +21,9 @@ func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 
 // Start IStorage Handler 
 func (handler *SQLLiteTableHandler) GetPersistantStorage() *per.IPersistantStorage {
-	par := handler.Parent
-	res := par.(*per.IPersistantStorage)
-	return res
+	//par := handler.Parent
+	//res := par.(*per.IPersistantStorage)
+	return nil
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant *per.IPersistantStorage){
