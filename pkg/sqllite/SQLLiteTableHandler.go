@@ -23,11 +23,12 @@ func NewSQLLiteTableHandler(datastore *SQLLiteDatastore) *SQLLiteTableHandler {
 func (handler *SQLLiteTableHandler) GetPersistantStorage() per.IPersistantStorage {
 	//par := handler.Parent
 	//res := par.(*per.IPersistantStorage)
-	return nil
+	return handler.Parent
 }
 
 func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersistantStorage){
-	//handler.Parent = persistant
+	res := persistant.(*per.IPersistantStorage)
+	handler.Parent = res
 }
 
 func (handler *SQLLiteTableHandler) CreateStructures() per.IQueryResult {
