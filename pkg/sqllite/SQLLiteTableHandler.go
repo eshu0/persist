@@ -31,7 +31,6 @@ func (handler *SQLLiteTableHandler) SetPersistantStorage(persistant per.IPersist
 	handler.Parent = res
 }
 
-/*
 func (handler *SQLLiteTableHandler) CreateStructures() per.IQueryResult {
 	handler.Parent.GetLog().LogDebug("CreateStructures","Returning empty failed SQL Query Result")
 
@@ -81,7 +80,6 @@ func (handler *SQLLiteTableHandler) Delete(data per.IDataItem) per.IQueryResult 
 	// this needs to be implemented
 	return  NewEmptyFailedSQLLiteQueryResult()
 }
-*/
 
 func (handler *SQLLiteTableHandler) ConvertResult(data per.IQueryResult) SQLLiteQueryResult {
 	// this needs to be implemented
