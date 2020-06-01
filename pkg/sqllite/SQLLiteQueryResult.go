@@ -26,18 +26,17 @@ func NewEmptyFailedSQLLiteQueryResult() SQLLiteQueryResult {
 	return res
 }
 
-
 func NewEmptySucceedSQLLiteQueryResult() SQLLiteQueryResult {
 	res := SQLLiteQueryResult{}
 	res.Succeeded =true
 	return res
 }
 
-func (res *SQLLiteQueryResult) QuerySucceeded() bool{
+func (res SQLLiteQueryResult) QuerySucceeded() bool{
 	return res.Succeeded
 }
 
-func (res *SQLLiteQueryResult) Error() error {
+func (res SQLLiteQueryResult) Error() error {
 	return res.ErrorData
 
 }
