@@ -10,14 +10,14 @@ import (
 type SQLLiteQueryResult struct {
 	per.IQueryResult
 
-	Results []per.IDataItem 
-	Result per.IDataItem
+	Results []per.IDataItem `json:"results,omitempty"`
+	Result per.IDataItem	`json:"result,omitempty"`
 	
-	RowsAffected int64
-	LastInsertId int64
+	RowsAffected int64		`json:"rowsaffected,omitempty"`
+	LastInsertId int64		`json:"lastinserti,omitempty"`
 	
-	Succeeded bool
-	ErrorData error
+	Succeeded bool			`json:"succeeded,omitempty"`
+	ErrorData error			`json:"errordata,omitempty"`
 }
 
 
