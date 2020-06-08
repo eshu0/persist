@@ -8,7 +8,7 @@ import (
 )   
 
 type SQLLiteQueryResult struct {
-	per.IQueryResult
+	per.IQueryResult		`json:"-"`
 
 	Results []per.IDataItem `json:"results,omitempty"`
 	Result per.IDataItem	`json:"result,omitempty"`
