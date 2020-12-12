@@ -1,7 +1,7 @@
 package persist
 
 import (
-	sli "github.com/eshu0/simplelogger/interfaces"
+	sli "github.com/eshu0/simplelogger/pkg/interfaces"
 )
 
 type IPersistantStorage interface {
@@ -24,4 +24,3 @@ type IPersistantStorage interface {
 	//Wipe() IQueryResult
 
 }
-
