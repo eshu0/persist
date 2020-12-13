@@ -1,9 +1,5 @@
 package persist
 
-import (
-	sli "github.com/eshu0/simplelogger/pkg/interfaces"
-)
-
 type IPersistantStorage interface {
 
 	// Get/Set the logging for the interface
@@ -11,10 +7,6 @@ type IPersistantStorage interface {
 	SetStorageHander(name string, store IStorageHandler)
 	GetAllStorageHandlers() map[string]IStorageHandler
 	RemoveStorageHandler(name string) bool
-
-	// Get/Set the logging for the interface
-	GetLog() sli.ISimpleLogger
-	SetLog(logger sli.ISimpleLogger)
 
 	// This function creates all the structures for all the handlers
 	// this could be files, tables etc
