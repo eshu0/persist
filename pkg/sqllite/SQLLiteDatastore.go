@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	per "github.com/eshu0/persist/pkg/interfaces"
+	sl "github.com/eshu0/simpleslogger"
 	_ "github.com/mattn/go-sqlite3"
 )
 
